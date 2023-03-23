@@ -12,7 +12,7 @@ export const App = () => {
   return (
     <>
       <Header changeCurrentPage={changeCurrentPage}/>
-      <Main />
+      <Main currentPage={currentPage}/>
     </>
   );
 };
