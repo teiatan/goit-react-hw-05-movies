@@ -45,11 +45,11 @@ export const App = () => {
   const getMovieReview = () => {
     apiService.getMovieReviews(currentMovieId)
     .then(response => {
-      const reviewsData = response.results.map(review => {return({author: review.author, review: review.content})})
+      const reviewsData = response.results.map(review => {return({author: review.author, review: review.content, id: review.id})})
       setReviews(reviewsData);
     })
   };
-  
+
   return (
     <>
       <Header changeCurrentPage={changeCurrentPage}/>
@@ -57,7 +57,7 @@ export const App = () => {
         <MoviesList title="Trending today" movies={movies} onClickMovieLink={takeCurrentMovieIdByClickOnLink}/>
         {currentMovieId && currentMovieInfo && <OneMovie id={currentMovieId} data={currentMovieInfo}/>}
         <AdditionalInfoButtons onClickCast={getMovieCast} onClickReview={getMovieReview}/>
-        <Reviews />
+        <Reviews reviews={reviews}/>
       </Main>
     </>
   );
