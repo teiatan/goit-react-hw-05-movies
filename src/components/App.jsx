@@ -12,6 +12,7 @@ export const App = () => {
   const [movies, setMovies] = useState([]);
   const [currentMovieId, setCurrentMovieId] = useState(null);
   const [currentMovieInfo, setCurrentMovieInfo] = useState(null);
+  const [reviews, setReviews] = useState(null);
 
   useEffect(()=>{
     apiService.getMostPopularMovies().then(
@@ -37,11 +38,14 @@ export const App = () => {
   };
 
   const getMovieCast = (currentMovieId) => {
-
+    
   };
 
-  const getMovieReview = (currentMovieId) => {
-
+  const getMovieReview = () => {
+    apiService.getMovieReviews(currentMovieId)
+    .then(response => {
+      console.log(response);
+    })
   };
   
   return (

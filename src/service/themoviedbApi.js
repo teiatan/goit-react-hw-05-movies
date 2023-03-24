@@ -14,7 +14,7 @@ class ApiService {
     byKeyWordUrl = "/search/company";
     wholeMovieInformationUrl = "/movie/";
     actorsUrl = "/movies/get-movie-credits";
-    viewsUrl = "/movies/get-movie-reviews";
+    viewsUrl = "/movie/get-movie-reviews";
  
 
     async getMostPopularMovies() {
@@ -58,7 +58,33 @@ class ApiService {
             console.log(error)
         }
         return (movieInfo);
-    }
+    };
+
+    async getMovieCast(id) {
+        let movieCast = null;
+        try {
+            await fetch(`${this.baseUrl}${this.wholeMovieInformationUrl}${id}?api_key=${this.apiKey}`)
+            .then(response => response.json())
+            .then(data => movieCast=data)
+
+        } catch(error) {
+            console.log(error)
+        }
+        return (movieCast);
+    };
+
+    async getMovieReviews(id) {
+        let movieReviews = null;
+        try {
+            await fetch(`${this.baseUrl}/movie/${id}/reviews?api_key=${this.apiKey}`)
+            .then(response => response.json())
+            .then(data => movieReviews=data)
+
+        } catch(error) {
+            console.log(error)
+        }
+        return (movieReviews);
+    };
 };
 
 export const apiService = new ApiService();
