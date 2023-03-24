@@ -34,11 +34,9 @@ class ApiService {
     async getMoviesByKeyWord(keyWord) {
         let movies =[];
         try {
-            console.log(`${this.baseUrl}${this.byKeyWordUrl}?api_key=${this.apiKey}&query=${keyWord}`);
             await fetch(`${this.baseUrl}${this.byKeyWordUrl}?api_key=${this.apiKey}&query=${keyWord}`)
             .then(response => response.json())
             .then(data => {
-                console.log(data)
                 movies = data.results.map(movie=>{
                     return ({title: movie.name, id: movie.id})
                 });
