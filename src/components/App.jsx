@@ -5,6 +5,7 @@ import { MoviesList } from "components/moviesList/MoviesList";
 import { OneMovie } from "components/oneMovie/OneMovie";
 import { AdditionalInfoButtons } from "./additionalInfoButtons/AdditionalInfoButtons";
 import { Reviews } from "./reviews/Reviews";
+import { Cast } from "./cast/Cast";
 import { apiService } from "service/themoviedbApi";
 
 
@@ -67,6 +68,7 @@ export const App = () => {
         {currentMovieId && currentMovieInfo && <OneMovie id={currentMovieId} data={currentMovieInfo}/>}
         {currentMovieId && <AdditionalInfoButtons onClickCast={getMovieCast} onClickReview={getMovieReview}/>}
         {reviews && <Reviews reviews={reviews}/>}
+        {cast && <Cast actors={cast}/>}
       </Main>
     </>
   );

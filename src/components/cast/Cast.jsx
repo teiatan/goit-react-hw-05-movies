@@ -1,7 +1,26 @@
 import PropTypes from "prop-types";
 
 export function Cast ({actors}) {
-
+    return (
+        <>
+            <h3>Actors</h3>
+            {actors.length===0 ?
+            <p>There is no information about actors</p>
+            :
+            <ul>
+                {actors.map(actor => {
+                    return (
+                        <li key={actor.id}>
+                            <h4>{actor.name}</h4>
+                            <p>Character: {actor.character}</p>
+                            <img src={actor.photo} alt={actor.name}></img>
+                        </li>
+                    )
+                })}
+            </ul>
+            }
+        </>
+    )
 };
 
 Cast.propTypes = {
