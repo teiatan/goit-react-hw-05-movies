@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 import { Header } from "./header/Header";
 import { Main } from "./main/Main";
+import { Movies } from "pages/Movies";
+import { Home } from "pages/Home";
 import { MoviesList } from "components/moviesList/MoviesList";
 import { OneMovie } from "components/oneMovie/OneMovie";
 import { AdditionalInfoButtons } from "./additionalInfoButtons/AdditionalInfoButtons";
@@ -64,11 +67,15 @@ export const App = () => {
     <>
       <Header changeCurrentPage={changeCurrentPage}/>
       <Main currentPage={currentPage} movies={movies}>
-        {!currentMovieId && <MoviesList title="Trending today" movies={movies} onClickMovieLink={takeCurrentMovieIdByClickOnLink}/>}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<Movies />} />
+      </Routes>
+        {/* {!currentMovieId && <MoviesList title="Trending today" movies={movies} onClickMovieLink={takeCurrentMovieIdByClickOnLink}/>}
         {currentMovieId && currentMovieInfo && <OneMovie id={currentMovieId} data={currentMovieInfo}/>}
         {currentMovieId && <AdditionalInfoButtons onClickCast={getMovieCast} onClickReview={getMovieReview}/>}
         {reviews && <Reviews reviews={reviews}/>}
-        {cast && <Cast actors={cast}/>}
+        {cast && <Cast actors={cast}/>} */}
       </Main>
     </>
   );
