@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Header } from "./header/Header";
 import { Main } from "./main/Main";
 import { MoviesList } from "components/moviesList/MoviesList";
-import { OneMovie } from "components/moviesList/oneMovie/OneMovie";
+import { OneMovie } from "components/oneMovie/OneMovie";
 import { AdditionalInfoButtons } from "./additionalInfoButtons/AdditionalInfoButtons";
 import { Reviews } from "./reviews/Reviews";
 import { apiService } from "service/themoviedbApi";
