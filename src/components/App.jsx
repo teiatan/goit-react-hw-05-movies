@@ -4,12 +4,15 @@ import { Header } from "./header/Header";
 import { Main } from "./main/Main";
 import { Movies } from "pages/Movies";
 import { Home } from "pages/Home";
+import { MovieDetails } from "./movieDetails/MovieDetails";
 import { MoviesList } from "components/moviesList/MoviesList";
 import { OneMovie } from "components/oneMovie/OneMovie";
 import { AdditionalInfoButtons } from "./additionalInfoButtons/AdditionalInfoButtons";
 import { Reviews } from "./reviews/Reviews";
 import { Cast } from "./cast/Cast";
+import { NotFound } from "pages/NotFound";
 import { apiService } from "service/themoviedbApi";
+
 
 
 export const App = () => {
@@ -64,7 +67,13 @@ export const App = () => {
       <Main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/movies" element={<Movies />} />
+          <Route path="/movies" element={<Movies />}>
+            <Route path="/movies/:movieID" element={<MovieDetails />}>
+              {/* <Route path="/cast" element={<Cast />} /> */}
+              {/* <Route path="/reviews" element={<Reviews />} /> */}
+            </Route>
+          </Route>
+          <Route path="*" element={<NotFound />} />
         </Routes>
         {/* {!currentMovieId && <MoviesList title="Trending today" movies={movies} onClickMovieLink={takeCurrentMovieIdByClickOnLink}/>}
         {currentMovieId && currentMovieInfo && <OneMovie id={currentMovieId} data={currentMovieInfo}/>}

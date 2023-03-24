@@ -8,7 +8,7 @@ export function Header() {
         <HeaderTag>
             <PageContainer>
                 <NavTag>
-                    <a href="public/index.html">🎬</a>
+                    <a href="/">🎬</a>
                     <Ul>
                         <li><NavLink to="/">Home</NavLink></li>
                         <li><NavLink to="/movies">Movies</NavLink></li>
