@@ -42,10 +42,14 @@ export const App = () => {
   const getMovieCast = () => {
     apiService.getMovieActors(currentMovieId)
     .then( response => {
-      setCast(response.cast); 
-      console.log(response.cast);
+      const actors = response.cast.map(actor => {
+        return({name: actor.name, character: actor.character, id: actor.id, photo: `https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/${actor.profile_path}`})
+      })
+      setCast(actors); 
     })
   };
+
+  console.log(cast);
 
   const getMovieReview = () => {
     apiService.getMovieReviews(currentMovieId)
