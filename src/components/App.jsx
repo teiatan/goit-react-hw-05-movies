@@ -13,7 +13,6 @@ import { apiService } from "service/themoviedbApi";
 
 
 export const App = () => {
-  const [currentPage, setCurrentPage] = useState("home");
   const [movies, setMovies] = useState([]);
   const [currentMovieId, setCurrentMovieId] = useState(null);
   const [currentMovieInfo, setCurrentMovieInfo] = useState(null);
@@ -34,10 +33,6 @@ export const App = () => {
       response => setCurrentMovieInfo(response)
     );
   }, [currentMovieId]);
-
-  const changeCurrentPage = (pageName) => {
-    setCurrentPage(pageName);
-  };
 
   const takeCurrentMovieIdByClickOnLink = (id) => {
     setCurrentMovieId(id);
@@ -65,8 +60,8 @@ export const App = () => {
 
   return (
     <>
-      <Header changeCurrentPage={changeCurrentPage}/>
-      <Main currentPage={currentPage} movies={movies}>
+      <Header />
+      <Main>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/movies" element={<Movies />} />
