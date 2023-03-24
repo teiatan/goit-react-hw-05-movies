@@ -4,8 +4,7 @@ export function AdditionalInfoButtons({onClickCast, onClickReview}) {
         e.preventDefault();
         switch(e.target.id){
             case "cast":
-                console.log('cast clicked');
-                //onClickCast();
+                onClickCast();
                 break;
             case "reviews":
                 onClickReview();
@@ -17,7 +16,7 @@ export function AdditionalInfoButtons({onClickCast, onClickReview}) {
 
 
     return (
-        <ul>
+        <ul> Additional information
             <li><a href="asd" id="cast" onClick={onClick}>Cast</a></li>
             <li><a href="asd" id="reviews" onClick={onClick}>Reviews</a></li>
         </ul>

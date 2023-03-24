@@ -79,11 +79,22 @@ class ApiService {
             await fetch(`${this.baseUrl}/movie/${id}/reviews?api_key=${this.apiKey}`)
             .then(response => response.json())
             .then(data => movieReviews=data)
-
         } catch(error) {
             console.log(error)
         }
         return (movieReviews);
+    };
+
+    async getMovieActors(id) {
+        let cast = null;
+        try {
+            await fetch(`${this.baseUrl}/movie/${id}/credits?api_key=${this.apiKey}`)
+            .then(response => response.json())
+            .then(data => cast=data)
+        } catch(error) {
+            console.log(error)
+        }
+        return (cast);
     };
 };
 

@@ -3,7 +3,9 @@ import PropTypes from "prop-types";
 export function Reviews ({reviews}) {
     return(
         <>
-        {reviews &&
+        {reviews.length ===0 ?
+        <p> there are no reviews yet</p>
+        :
             <>
                 <h3>Reviews</h3> 
                 <ul>
