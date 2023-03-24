@@ -8,7 +8,7 @@ export const App = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(()=>{
-    apiService.getMostPopularMovies().then(
+    apiService.getMoviesByKeyWord("dog").then(
       response => setMovies(response)
     );    
   }, []);

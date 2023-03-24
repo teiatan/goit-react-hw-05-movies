@@ -8,10 +8,10 @@ const actorsUrl = "/movies/get-movie-credits";
 const viewsUrl = "/movies/get-movie-reviews"; */
 
 class ApiService {
-    apiKey = "?api_key=d31c9faeabd85b83726848cf0b50c5a1";
+    apiKey = "d31c9faeabd85b83726848cf0b50c5a1";
     baseUrl = "https://api.themoviedb.org/3";
     mostPoularUrl = "/trending/movie/day";
-    byKeyWordUrl = "/search/search-movies";
+    byKeyWordUrl = "/search/company";
     wholeMovieInformationUrl = "/movies/get-movie-details";
     actorsUrl = "/movies/get-movie-credits";
     viewsUrl = "/movies/get-movie-reviews";
@@ -20,10 +20,28 @@ class ApiService {
     async getMostPopularMovies() {
         let movies =[];
         try {
-            await fetch(`${this.baseUrl}${this.mostPoularUrl}${this.apiKey}`)
+            await fetch(`${this.baseUrl}${this.mostPoularUrl}?api_key=${this.apiKey}`)
             .then(response => response.json())
             .then(data => {
                 movies = data.results;
+            });
+        } catch(error) {
+            console.log(`fetch error: ${error}`)
+        };
+        return(movies);
+    };
+
+    async getMoviesByKeyWord(keyWord) {
+        let movies =[];
+        try {
+            console.log(`${this.baseUrl}${this.byKeyWordUrl}?api_key=${this.apiKey}&query=${keyWord}`);
+            await fetch(`${this.baseUrl}${this.byKeyWordUrl}?api_key=${this.apiKey}&query=${keyWord}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                movies = data.results.map(movie=>{
+                    return ({title: movie.name, id: movie.id})
+                });
             });
         } catch(error) {
             console.log(`fetch error: ${error}`)
