@@ -4,6 +4,7 @@ import { Main } from "./main/Main";
 import { MoviesList } from "components/moviesList/MoviesList";
 import { OneMovie } from "components/moviesList/oneMovie/OneMovie";
 import { AdditionalInfoButtons } from "./additionalInfoButtons/AdditionalInfoButtons";
+import { Reviews } from "./reviews/Reviews";
 import { apiService } from "service/themoviedbApi";
 
 
@@ -56,6 +57,7 @@ export const App = () => {
         <MoviesList title="Trending today" movies={movies} onClickMovieLink={takeCurrentMovieIdByClickOnLink}/>
         {currentMovieId && currentMovieInfo && <OneMovie id={currentMovieId} data={currentMovieInfo}/>}
         <AdditionalInfoButtons onClickCast={getMovieCast} onClickReview={getMovieReview}/>
+        <Reviews />
       </Main>
     </>
   );
