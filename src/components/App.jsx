@@ -18,6 +18,15 @@ export const App = () => {
     );    
   }, []);
 
+  useEffect(()=>{
+    if(!currentMovieId) {
+      return;
+    };
+    apiService.getWholeMovieInformation(currentMovieId).then(
+      response => setCurrentMovieInfo(response)
+    );
+  }, [currentMovieId]);
+
   const changeCurrentPage = (pageName) => {
     setCurrentPage(pageName);
   };
@@ -33,7 +42,7 @@ export const App = () => {
       <Header changeCurrentPage={changeCurrentPage}/>
       <Main currentPage={currentPage} movies={movies}>
         <MoviesList title="Trending today" movies={movies} onClickMovieLink={takeCurrentMovieIdByClickOnLink}/>
-        {currentMovieId && <OneMovie id={currentMovieId}/>}
+        {currentMovieId && currentMovieInfo && <OneMovie id={currentMovieId} data={currentMovieInfo}/>}
       </Main>
     </>
   );

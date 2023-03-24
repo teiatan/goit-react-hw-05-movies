@@ -12,7 +12,7 @@ class ApiService {
     baseUrl = "https://api.themoviedb.org/3";
     mostPoularUrl = "/trending/movie/day";
     byKeyWordUrl = "/search/company";
-    wholeMovieInformationUrl = "/movies/get-movie-details";
+    wholeMovieInformationUrl = "/movie/";
     actorsUrl = "/movies/get-movie-credits";
     viewsUrl = "/movies/get-movie-reviews";
  
@@ -47,6 +47,18 @@ class ApiService {
         return(movies);
     };
 
+    async getWholeMovieInformation(id) {
+        let movieInfo = null;
+        try {
+            await fetch(`${this.baseUrl}${this.wholeMovieInformationUrl}${id}?api_key=${this.apiKey}`)
+            .then(response => response.json())
+            .then(data => movieInfo=data)
+
+        } catch(error) {
+            console.log(error)
+        }
+        return (movieInfo);
+    }
 };
 
 export const apiService = new ApiService();
