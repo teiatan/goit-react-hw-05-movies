@@ -54,10 +54,10 @@ export const App = () => {
     <>
       <Header changeCurrentPage={changeCurrentPage}/>
       <Main currentPage={currentPage} movies={movies}>
-        <MoviesList title="Trending today" movies={movies} onClickMovieLink={takeCurrentMovieIdByClickOnLink}/>
+        {!currentMovieId && <MoviesList title="Trending today" movies={movies} onClickMovieLink={takeCurrentMovieIdByClickOnLink}/>}
         {currentMovieId && currentMovieInfo && <OneMovie id={currentMovieId} data={currentMovieInfo}/>}
-        <AdditionalInfoButtons onClickCast={getMovieCast} onClickReview={getMovieReview}/>
-        <Reviews reviews={reviews}/>
+        {currentMovieId && <AdditionalInfoButtons onClickCast={getMovieCast} onClickReview={getMovieReview}/>}
+        {reviews && <Reviews reviews={reviews}/>}
       </Main>
     </>
   );

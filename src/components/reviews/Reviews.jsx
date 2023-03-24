@@ -26,6 +26,6 @@ Reviews.propTypes = {
     reviews: PropTypes.arrayOf(PropTypes.shape({
         author: PropTypes.string,
         review: PropTypes.string,
-        id: PropTypes.oneOf([PropTypes.string, PropTypes.number]),
+        id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     }))
 };
