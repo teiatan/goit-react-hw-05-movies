@@ -4,7 +4,7 @@ export function OneMovie({data}) {
             {data && 
                 <>
                     <img 
-                        src={`https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/${data.poster_path}`}
+                        src={`https://www.themoviedb.org/t/p/original/${data.poster_path}`}
                         alt={data.tagline}>
                     </img>
                     <h3>{data.title} ({data.release_date.slice(0,4)})</h3>
