@@ -1,4 +1,10 @@
-export function MoviesList({title, movies}) {
+export function MoviesList({title, movies, onClickMovieLink}) {
+
+    const onClick = e => {
+        e.preventDefault();
+        onClickMovieLink(e.target.id);
+    }
+
     return(
         <>
         <h2>{title}</h2>
@@ -6,7 +12,7 @@ export function MoviesList({title, movies}) {
             {movies.map(movie => {
                 return(
                     <li key={movie.id}>
-                        <a href="router">{movie.title}</a>
+                        <a href="router" id={movie.id} onClick={onClick}>{movie.title}</a>
                     </li>
                 )
             })}
