@@ -46,17 +46,17 @@ export const App = () => {
       const actors = response.cast.map(actor => {
         return({name: actor.name, character: actor.character, id: actor.id, photo: `https://www.themoviedb.org/t/p/original/${actor.profile_path}`})
       })
-      setCast(actors); 
+      setCast(actors);
+      setReviews(null);
     })
   };
-
-  console.log(cast);
 
   const getMovieReview = () => {
     apiService.getMovieReviews(currentMovieId)
     .then(response => {
       const reviewsData = response.results.map(review => {return({author: review.author, review: review.content, id: review.id})})
       setReviews(reviewsData);
+      setCast(null); 
     })
   };
 
