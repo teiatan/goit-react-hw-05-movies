@@ -8,7 +8,6 @@ export function AdditionalInfoButtons({onClickCast, onClickReview}) {
                 //onClickCast();
                 break;
             case "reviews":
-                console.log('reviews clicked');
                 onClickReview();
                 break;
             default:

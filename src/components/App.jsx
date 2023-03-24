@@ -44,7 +44,8 @@ export const App = () => {
   const getMovieReview = () => {
     apiService.getMovieReviews(currentMovieId)
     .then(response => {
-      console.log(response);
+      const reviewsData = response.results.map(review => {return({author: review.author, review: review.content})})
+      setReviews(reviewsData);
     })
   };
   
