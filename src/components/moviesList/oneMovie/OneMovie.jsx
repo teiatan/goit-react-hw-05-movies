@@ -1,7 +1,21 @@
-export function OneMovie() {
+export function OneMovie({data}) {
     return (
         <>
-            <h3>title</h3>
+            {data && 
+                <>
+                    <img src={`https://api.themoviedb.org/3/movie/${data.id}/images?api_key=d31c9faeabd85b83726848cf0b50c5a1`} alt={`https://api.themoviedb.org/3/movie/${data.id}/images?api_key=d31c9faeabd85b83726848cf0b50c5a1`}></img>
+                    <h3>{data.title} ({data.release_date.slice(0,4)})</h3>
+                    <p>User score: {data.vote_average*10}%</p>
+                    <h4>Overview</h4>
+                    <p>{data.overview}</p>
+                    <h4>Genres</h4>
+                    <ul>
+                        {data.genres.map(genre => 
+                        {return(<li key={genre.name}>{genre.name}</li>)}
+                        )}
+                    </ul>
+                </>
+            }
         </>
     );
 };

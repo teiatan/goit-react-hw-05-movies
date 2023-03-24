@@ -10,7 +10,7 @@ export const App = () => {
   const [currentPage, setCurrentPage] = useState("home");
   const [movies, setMovies] = useState([]);
   const [currentMovieId, setCurrentMovieId] = useState(null);
-  const [currentMovieInfo, setCurrentMovieInfo] = useState({});
+  const [currentMovieInfo, setCurrentMovieInfo] = useState(null);
 
   useEffect(()=>{
     apiService.getMostPopularMovies().then(
@@ -35,7 +35,7 @@ export const App = () => {
     setCurrentMovieId(id);
   };
 
-  //console.log(movies);
+  console.log(currentMovieInfo);
   
   return (
     <>
