@@ -3,7 +3,10 @@ export function OneMovie({data}) {
         <>
             {data && 
                 <>
-                    <img src={`https://api.themoviedb.org/3/movie/${data.id}/images?api_key=d31c9faeabd85b83726848cf0b50c5a1`} alt={`https://api.themoviedb.org/3/movie/${data.id}/images?api_key=d31c9faeabd85b83726848cf0b50c5a1`}></img>
+                    <img 
+                        src={`https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/${data.poster_path}`}
+                        alt={data.tagline}>
+                    </img>
                     <h3>{data.title} ({data.release_date.slice(0,4)})</h3>
                     <p>User score: {data.vote_average*10}%</p>
                     <h4>Overview</h4>
