@@ -1,5 +1,6 @@
 import { Ul, HeaderTag, NavTag } from "./Header.styled";
 import { PageContainer } from "components/pageContainer/pageContainer";
+import { NavLink } from "react-router-dom";
 
 export function Header({changeCurrentPage}) {
 
@@ -15,8 +16,8 @@ export function Header({changeCurrentPage}) {
                 <NavTag>
                     <a href="public/index.html">🎬</a>
                     <Ul onClick={onChangeCurrentPage}>
-                        <li id="home">Home</li>
-                        <li id="movies">Movies</li>
+                        <li id="home"><NavLink to="/">Home</NavLink></li>
+                        <li id="movies"><NavLink to="/movies">Movies</NavLink></li>
                     </Ul>
                 </NavTag>
             </PageContainer>

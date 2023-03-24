@@ -69,7 +69,7 @@ export const App = () => {
       <Main currentPage={currentPage} movies={movies}>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<Movies />} />
+        <Route path="/movies" element={<Movies />} />
       </Routes>
         {/* {!currentMovieId && <MoviesList title="Trending today" movies={movies} onClickMovieLink={takeCurrentMovieIdByClickOnLink}/>}
         {currentMovieId && currentMovieInfo && <OneMovie id={currentMovieId} data={currentMovieInfo}/>}
