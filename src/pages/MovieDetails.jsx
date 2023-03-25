@@ -1,22 +1,27 @@
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { OneMovie } from "components/oneMovie/OneMovie";
 import { AdditionalInfoButtons } from "components/additionalInfoButtons/AdditionalInfoButtons";
 import { apiService } from "service/themoviedbApi";
 
-export function MovieDetails({movieId, getCast, getReview}) {
+export function MovieDetails({ getCast, getReview}) {
 
     const [currentMovieInfo, setCurrentMovieInfo] = useState(null);
     const [reviews, setReviews] = useState(null);
     const [cast, setCast] = useState(null);
 
+    const { movieID } = useParams();
+    console.log(useParams());
+    console.log(movieID);
+
     useEffect(()=>{
-        apiService.getWholeMovieInformation(movieId).then(
+        apiService.getWholeMovieInformation(movieID).then(
           response => setCurrentMovieInfo(response)
         );
-      }, [movieId]);
+      }, [movieID]);
 
       const getMovieCast = () => {
-        apiService.getMovieActors(movieId)
+        apiService.getMovieActors(movieID)
         .then( response => {
           const actors = response.cast.map(actor => {
             return({name: actor.name, character: actor.character, id: actor.id, photo: `https://www.themoviedb.org/t/p/original/${actor.profile_path}`})
@@ -27,7 +32,7 @@ export function MovieDetails({movieId, getCast, getReview}) {
       };
     
       const getMovieReview = () => {
-        apiService.getMovieReviews(movieId)
+        apiService.getMovieReviews(movieID)
         .then(response => {
           const reviewsData = response.results.map(review => {return({author: review.author, review: review.content, id: review.id})})
           setReviews(reviewsData);
@@ -38,7 +43,7 @@ export function MovieDetails({movieId, getCast, getReview}) {
     return (
         <>
             <OneMovie data={currentMovieInfo}/>
-            <AdditionalInfoButtons movieId={movieId} onClickCast={getMovieCast} onClickReview={getMovieReview}/>
+            <AdditionalInfoButtons movieId={movieID} onClickCast={getMovieCast} onClickReview={getMovieReview}/>
         </> 
     );
 };

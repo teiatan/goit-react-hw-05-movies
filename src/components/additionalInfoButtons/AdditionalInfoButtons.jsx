@@ -19,8 +19,8 @@ export function AdditionalInfoButtons({onClickCast, onClickReview, movieId}) {
 
     return (
         <ul onClick={onClick}> Additional information
-            <li><StyledLink to={`/movies/:${movieId}/cast`} id="cast"/* href="asd"  onClick={onClick} */>Cast</StyledLink></li>
-            <li><StyledLink to={`/movies/:${movieId}/reviews`} id="reviews"/* href="asd"  onClick={onClick} */>Reviews</StyledLink></li>
+            <li><StyledLink to={`/movies/${movieId}/cast`} id="cast"/* href="asd"  onClick={onClick} */>Cast</StyledLink></li>
+            <li><StyledLink to={`/movies/${movieId}/reviews`} id="reviews"/* href="asd"  onClick={onClick} */>Reviews</StyledLink></li>
         </ul>
     );
 };

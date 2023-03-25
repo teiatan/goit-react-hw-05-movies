@@ -15,7 +15,7 @@ export function MoviesList({title, movies, onClickMovieItem}) {
             {movies.map(movie => {
                 return(
                     <li key={movie.id} id={movie.id} onClick={onClick}>
-                        <Link to={`/movies/:${movie.id}`} id={movie.id} /* onClick={onClick} */>{movie.title}</Link>
+                        <Link to={`/movies/${movie.id}`} id={movie.id} /* onClick={onClick} */>{movie.title}</Link>
                     </li>
                 )
             })}
