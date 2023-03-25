@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { apiService } from "service/themoviedbApi";
+import { Img, Ul, Li, H3 } from "./Cast.styled";
 
 export function Cast () {
     const [cast, setCast] = useState([]);
@@ -19,21 +20,23 @@ export function Cast () {
 
     return (
         <>
-            <h3>Actors</h3>
+            <H3>Actors</H3>
             {cast.length===0 ?
             <p>There is no information about actors</p>
             :
-            <ul>
+            <Ul>
                 {cast.map(actor => {
                     return (
-                        <li key={actor.id}>
-                            <h4>{actor.name}</h4>
-                            <p>Character: {actor.character}</p>
-                            <img src={actor.photo} alt={actor.name}></img>
-                        </li>
+                        <Li key={actor.id}>
+                            <div>
+                                <h4>{actor.name}</h4>
+                                <p>Character: {actor.character}</p>
+                            </div>
+                            <Img src={actor.photo} alt={actor.name}></Img>
+                        </Li>
                     )
                 })}
-            </ul>
+            </Ul>
             }
         </>
     )
