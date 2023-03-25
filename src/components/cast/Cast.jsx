@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { apiService } from "service/themoviedbApi";
@@ -16,7 +15,7 @@ export function Cast () {
           })
           setCast(actors);
         })
-      }, [movieID]);
+    }, [movieID]);
 
     return (
         <>
@@ -40,13 +39,4 @@ export function Cast () {
             }
         </>
     )
-};
-
-Cast.propTypes = {
-    actors: PropTypes.arrayOf(PropTypes.shape({
-        character: PropTypes.string,
-        id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-        name: PropTypes.string,
-        photo: PropTypes.string,
-    }))
 };

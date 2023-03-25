@@ -21,8 +21,7 @@ export function Layout() {
             </HeaderTag>
             <Main>
                 <Outlet />
-            </Main>
-            
+            </Main>  
         </>
     );
 };

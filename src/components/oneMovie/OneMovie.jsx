@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { ImgTag, Div, InfoContainer } from "./OneMovie.styled";
 
 export function OneMovie({data}) {
@@ -10,13 +11,13 @@ export function OneMovie({data}) {
                         alt={data.tagline}>
                     </ImgTag>
                     <InfoContainer>
-                        <h3>{data.title} ({data.release_date.slice(0,4)})</h3>
-                        <p>User score: {data.vote_average*10}%</p>
+                        <h3>{data.title} ({data.release_date && (data.release_date.slice(0,4))})</h3>
+                        <p>User score:  {Math.round(data.vote_average*10)}%</p>
                         <h4>Overview</h4>
                         <p>{data.overview}</p>
                         <h4>Genres</h4>
                         <ul>
-                            {data.genres.map(genre => 
+                            {data.genres && data.genres.map(genre => 
                             {return(<li key={genre.name}>{genre.name}</li>)}
                             )}
                         </ul>
@@ -25,4 +26,16 @@ export function OneMovie({data}) {
             }
         </>
     );
+};
+
+OneMovie.propTypes = {
+    data: PropTypes.shape({
+        release_date: PropTypes.string,
+        overview: PropTypes.string,
+        vote_average: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+        genres: PropTypes.arrayOf(PropTypes.shape({
+            name:PropTypes.string,
+            id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+        })),
+    })
 };

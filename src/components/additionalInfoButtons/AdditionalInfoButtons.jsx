@@ -8,7 +8,6 @@ export function AdditionalInfoButtons() {
                 <Li><StyledLink to="cast">Cast</StyledLink></Li>
                 <Li><StyledLink to="reviews">Reviews</StyledLink></Li>
             </Ul>
-        </Div>
-        
+        </Div> 
     );
 };

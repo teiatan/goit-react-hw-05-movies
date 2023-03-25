@@ -18,12 +18,11 @@ export function Movies() {
                 if(response.results.length===0) {
                     Notify.failure(`There are no ${inputValue} movies`);
                     return;
-                }
-                const foundMovies = response.results.map(movie=>{
+                };
+                const foundMovies = response.results.map(movie => {
                     return ({title: movie.name, id: movie.id})
                 });
                 setMovies(foundMovies);
-                console.log(response);
                 Notify.success(`${response.total_results} movies are found`);
             }
         );  
@@ -31,8 +30,8 @@ export function Movies() {
 
     return (
         <>
-        <SearchBar handleSearchSubmit={searchMovieByKeyWord}/>
-        {movies && <MoviesList movies={movies}/>}
+            <SearchBar handleSearchSubmit={searchMovieByKeyWord}/>
+            {movies && <MoviesList movies={movies}/>}
         </>
     );
 };

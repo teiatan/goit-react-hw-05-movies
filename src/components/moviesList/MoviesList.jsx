@@ -5,20 +5,24 @@ export function MoviesList({title, movies}) {
 
     return(
         <>
-        <h2>{title}</h2>
-        <ul>
-            {movies.map(movie => {
-                return(
-                    <li key={movie.id}>
-                        <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
-                    </li>
-                )
-            })}
-        </ul>
+            {title && <h2>{title}</h2>}
+            <ul>
+                {movies.map(movie => {
+                    return(
+                        <li key={movie.id}>
+                            <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
+                        </li>
+                    )
+                })}
+            </ul>
         </>
     );
 };
 
 MoviesList.propTypes = {
-    onClickMovieItem: PropTypes.func,
+    title: PropTypes.string,
+    movies: PropTypes.arrayOf(PropTypes.shape({
+        title: PropTypes.string,
+        id: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    }))
 };

@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { apiService } from "service/themoviedbApi";
@@ -18,31 +17,23 @@ export function Reviews () {
 
     return(
         <>
-        {reviews.length ===0 ?
-        <p> there are no reviews yet</p>
-        :
-            <>
-                <H3 className="isHidden">Reviews</H3> 
-                <Ul>
-                    {reviews.map(review => {
-                        return(
-                            <Li key={review.id}>
-                                <h3>Author: {review.author}</h3>
-                                <p>{review.review}</p>
-                            </Li>
-                        )
-                    })}
-                </Ul>
-            </>
-        }
+            {reviews.length ===0 ?
+                <p> there are no reviews yet</p>
+                :
+                <>
+                    <H3 className="isHidden">Reviews</H3> 
+                    <Ul>
+                        {reviews.map(review => {
+                            return(
+                                <Li key={review.id}>
+                                    <h3>Author: {review.author}</h3>
+                                    <p>{review.review}</p>
+                                </Li>
+                            )
+                        })}
+                    </Ul>
+                </>
+            }
         </>
     )
-};
-
-Reviews.propTypes = {
-    reviews: PropTypes.arrayOf(PropTypes.shape({
-        author: PropTypes.string,
-        review: PropTypes.string,
-        id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    }))
 };
