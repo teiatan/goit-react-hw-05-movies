@@ -1,4 +1,6 @@
-export function AdditionalInfoButtons({onClickCast, onClickReview}) {
+import { StyledLink } from "./AdditionalInfoButtons.styled";
+
+export function AdditionalInfoButtons({onClickCast, onClickReview, movieId}) {
 
     const onClick = e => {
         e.preventDefault();
@@ -16,9 +18,9 @@ export function AdditionalInfoButtons({onClickCast, onClickReview}) {
 
 
     return (
-        <ul> Additional information
-            <li><a href="asd" id="cast" onClick={onClick}>Cast</a></li>
-            <li><a href="asd" id="reviews" onClick={onClick}>Reviews</a></li>
+        <ul onClick={onClick}> Additional information
+            <li><StyledLink to={`/movies/:${movieId}/cast`} id="cast"/* href="asd"  onClick={onClick} */>Cast</StyledLink></li>
+            <li><StyledLink to={`/movies/:${movieId}/reviews`} id="reviews"/* href="asd"  onClick={onClick} */>Reviews</StyledLink></li>
         </ul>
     );
 };

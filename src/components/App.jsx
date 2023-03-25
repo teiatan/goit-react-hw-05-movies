@@ -1,24 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import { Header } from "./header/Header";
 import { Main } from "./main/Main";
 import { Movies } from "pages/Movies";
 import { Home } from "pages/Home";
 import { MovieDetails } from "../pages/MovieDetails";
-import { MoviesList } from "components/moviesList/MoviesList";
-import { OneMovie } from "components/oneMovie/OneMovie";
-import { AdditionalInfoButtons } from "./additionalInfoButtons/AdditionalInfoButtons";
 import { Reviews } from "./reviews/Reviews";
 import { Cast } from "./cast/Cast";
 import { NotFound } from "pages/NotFound";
-import { apiService } from "service/themoviedbApi";
+
 
 
 
 export const App = () => {
-  const [movies, setMovies] = useState([]);
   const [currentMovieId, setCurrentMovieId] = useState(null);
-  const [currentMovieInfo, setCurrentMovieInfo] = useState(null);
   const [reviews, setReviews] = useState(null);
   const [cast, setCast] = useState(null);
 
@@ -26,25 +21,13 @@ export const App = () => {
     setCurrentMovieId(id);
   };
 
-  const getMovieCast = () => {
-    apiService.getMovieActors(currentMovieId)
-    .then( response => {
-      const actors = response.cast.map(actor => {
-        return({name: actor.name, character: actor.character, id: actor.id, photo: `https://www.themoviedb.org/t/p/original/${actor.profile_path}`})
-      })
-      setCast(actors);
-      setReviews(null);
-    })
+  const getCast = (data) => {
+    setCast(data);
   };
 
-  const getMovieReview = () => {
-    apiService.getMovieReviews(currentMovieId)
-    .then(response => {
-      const reviewsData = response.results.map(review => {return({author: review.author, review: review.content, id: review.id})})
-      setReviews(reviewsData);
-      setCast(null); 
-    })
-  };
+  const getReview = (data) => {
+    setReviews(data);
+  }
 
   return (
     <>
@@ -55,17 +38,12 @@ export const App = () => {
           <Route path="/movies" element={<Movies onClickMovieItem={onClickMovieItem}/>}>
             
           </Route>
-          <Route path="/movies/:movieID" element={<MovieDetails movieId={currentMovieId}/>}>
-            {/* <Route path="/cast" element={<Cast />} /> */}
-            {/* <Route path="/reviews" element={<Reviews />} /> */}
+          <Route path="/movies/:movieID" element={<MovieDetails movieId={currentMovieId} getCast={getCast} getReview={getReview}/>}>
+            <Route path="/movies/:movieID/cast" element={<Cast actors={cast}/>} />
+            <Route path="/movies/:movieID/reviews" element={<Reviews reviews={reviews}/>} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
-        {/* {!currentMovieId && <MoviesList title="Trending today" movies={movies} onClickMovieLink={takeCurrentMovieIdByClickOnLink}/>}
-        {currentMovieId && currentMovieInfo && <OneMovie id={currentMovieId} data={currentMovieInfo}/>}
-        {currentMovieId && <AdditionalInfoButtons onClickCast={getMovieCast} onClickReview={getMovieReview}/>}
-        {reviews && <Reviews reviews={reviews}/>}
-        {cast && <Cast actors={cast}/>} */}
       </Main>
       
     </>
