@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { apiService } from "service/themoviedbApi";
 
 export function Cast () {
-    const [cast, setCast] = useState(null);
+    const [cast, setCast] = useState([]);
     const { movieID } = useParams();
 
     useEffect(() => {

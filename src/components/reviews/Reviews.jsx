@@ -4,9 +4,16 @@ import { useParams } from "react-router-dom";
 import { apiService } from "service/themoviedbApi";
 
 export function Reviews () {
-    const [reviews, setReviews] = useState(null);
-
+    const [reviews, setReviews] = useState([]);
     const { movieID } = useParams();
+
+    useEffect(() => {
+        apiService.getMovieReviews(movieID)
+        .then(response => {
+          const reviewsData = response.results.map(review => {return({author: review.author, review: review.content, id: review.id})})
+          setReviews(reviewsData);
+        })
+      }, [movieID]);
 
     const getMovieReview = () => {
         apiService.getMovieReviews(movieID)
