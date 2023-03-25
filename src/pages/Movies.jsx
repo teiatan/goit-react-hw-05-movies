@@ -10,6 +10,9 @@ export function Movies() {
 
 
     return (
-        (!searchInput && <SearchBar />)
+        <>
+        {!searchInput && <SearchBar />}
+        
+        </>
     );
 };

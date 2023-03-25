@@ -81,6 +81,7 @@ export const App = () => {
         {reviews && <Reviews reviews={reviews}/>}
         {cast && <Cast actors={cast}/>} */}
       </Main>
+      
     </>
   );
 };
