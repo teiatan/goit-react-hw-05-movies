@@ -11,21 +11,11 @@ export function Cast () {
         apiService.getMovieActors(movieID)
         .then( response => {
           const actors = response.cast.map(actor => {
-            return({name: actor.name, character: actor.character, id: actor.id, photo: `https://www.themoviedb.org/t/p/original/${actor.profile_path}`})
+            return({name: actor.name, character: actor.character, id: actor.credit_id, photo: `https://www.themoviedb.org/t/p/original/${actor.profile_path}`})
           })
           setCast(actors);
         })
       }, [movieID]);
-
-    const getMovieCast = () => {
-        apiService.getMovieActors(movieID)
-        .then( response => {
-          const actors = response.cast.map(actor => {
-            return({name: actor.name, character: actor.character, id: actor.id, photo: `https://www.themoviedb.org/t/p/original/${actor.profile_path}`})
-          })
-          setCast(actors);
-        })
-      };
 
     return (
         <>

@@ -15,14 +15,6 @@ export function Reviews () {
         })
       }, [movieID]);
 
-    const getMovieReview = () => {
-        apiService.getMovieReviews(movieID)
-        .then(response => {
-          const reviewsData = response.results.map(review => {return({author: review.author, review: review.content, id: review.id})})
-          setReviews(reviewsData);
-        })
-      };
-
     return(
         <>
         {reviews.length ===0 ?

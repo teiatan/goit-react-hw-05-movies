@@ -1,6 +1,5 @@
 import { StyledLink } from "./AdditionalInfoButtons.styled";
-import { useParams } from "react-router-dom";
-    
+  
 export function AdditionalInfoButtons() {
     return (
         <ul> Additional information
