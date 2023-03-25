@@ -4,6 +4,7 @@ import { Outlet } from "react-router-dom";
 import { OneMovie } from "components/oneMovie/OneMovie";
 import { AdditionalInfoButtons } from "components/additionalInfoButtons/AdditionalInfoButtons";
 import { apiService } from "service/themoviedbApi";
+import { Suspense } from "react";
 
 export function MovieDetails() {
 
@@ -21,7 +22,9 @@ export function MovieDetails() {
         <>
             <OneMovie data={currentMovieInfo}/>
             <AdditionalInfoButtons movieId={movieID}/>
-            <Outlet />
+            <Suspense fallback={<div>Loading...</div>}>
+                <Outlet />
+            </Suspense>
         </> 
     );
 };
