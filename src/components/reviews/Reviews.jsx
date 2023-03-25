@@ -1,6 +1,21 @@
 import PropTypes from "prop-types";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { apiService } from "service/themoviedbApi";
 
-export function Reviews ({reviews}) {
+export function Reviews () {
+    const [reviews, setReviews] = useState(null);
+
+    const { movieID } = useParams();
+
+    const getMovieReview = () => {
+        apiService.getMovieReviews(movieID)
+        .then(response => {
+          const reviewsData = response.results.map(review => {return({author: review.author, review: review.content, id: review.id})})
+          setReviews(reviewsData);
+        })
+      };
+
     return(
         <>
         {reviews.length ===0 ?

@@ -1,14 +1,40 @@
 import PropTypes from "prop-types";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { apiService } from "service/themoviedbApi";
 
-export function Cast ({actors}) {
+export function Cast () {
+    const [cast, setCast] = useState(null);
+    const { movieID } = useParams();
+
+    useEffect(() => {
+        apiService.getMovieActors(movieID)
+        .then( response => {
+          const actors = response.cast.map(actor => {
+            return({name: actor.name, character: actor.character, id: actor.id, photo: `https://www.themoviedb.org/t/p/original/${actor.profile_path}`})
+          })
+          setCast(actors);
+        })
+      }, [movieID]);
+
+    const getMovieCast = () => {
+        apiService.getMovieActors(movieID)
+        .then( response => {
+          const actors = response.cast.map(actor => {
+            return({name: actor.name, character: actor.character, id: actor.id, photo: `https://www.themoviedb.org/t/p/original/${actor.profile_path}`})
+          })
+          setCast(actors);
+        })
+      };
+
     return (
         <>
             <h3>Actors</h3>
-            {actors.length===0 ?
+            {cast.length===0 ?
             <p>There is no information about actors</p>
             :
             <ul>
-                {actors.map(actor => {
+                {cast.map(actor => {
                     return (
                         <li key={actor.id}>
                             <h4>{actor.name}</h4>

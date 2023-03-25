@@ -8,8 +8,6 @@ import { apiService } from "service/themoviedbApi";
 export function MovieDetails() {
 
     const [currentMovieInfo, setCurrentMovieInfo] = useState(null);
-    const [reviews, setReviews] = useState(null);
-    const [cast, setCast] = useState(null);
 
     const { movieID } = useParams();
 
@@ -17,30 +15,12 @@ export function MovieDetails() {
         apiService.getWholeMovieInformation(movieID).then(
           response => setCurrentMovieInfo(response)
         );
-      }, [movieID]);
-
-      const getMovieCast = () => {
-        apiService.getMovieActors(movieID)
-        .then( response => {
-          const actors = response.cast.map(actor => {
-            return({name: actor.name, character: actor.character, id: actor.id, photo: `https://www.themoviedb.org/t/p/original/${actor.profile_path}`})
-          })
-          setCast(actors);
-        })
-      };
-    
-      const getMovieReview = () => {
-        apiService.getMovieReviews(movieID)
-        .then(response => {
-          const reviewsData = response.results.map(review => {return({author: review.author, review: review.content, id: review.id})})
-          setReviews(reviewsData);
-        })
-      };
+    }, [movieID]);
 
     return (
         <>
             <OneMovie data={currentMovieInfo}/>
-            <AdditionalInfoButtons movieId={movieID} onClickCast={getMovieCast} onClickReview={getMovieReview}/>
+            <AdditionalInfoButtons movieId={movieID}/>
             <Outlet />
         </> 
     );
