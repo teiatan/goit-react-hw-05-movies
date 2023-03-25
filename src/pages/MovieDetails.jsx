@@ -4,15 +4,13 @@ import { OneMovie } from "components/oneMovie/OneMovie";
 import { AdditionalInfoButtons } from "components/additionalInfoButtons/AdditionalInfoButtons";
 import { apiService } from "service/themoviedbApi";
 
-export function MovieDetails({ getCast, getReview}) {
+export function MovieDetails() {
 
     const [currentMovieInfo, setCurrentMovieInfo] = useState(null);
     const [reviews, setReviews] = useState(null);
     const [cast, setCast] = useState(null);
 
     const { movieID } = useParams();
-    console.log(useParams());
-    console.log(movieID);
 
     useEffect(()=>{
         apiService.getWholeMovieInformation(movieID).then(
@@ -27,7 +25,6 @@ export function MovieDetails({ getCast, getReview}) {
             return({name: actor.name, character: actor.character, id: actor.id, photo: `https://www.themoviedb.org/t/p/original/${actor.profile_path}`})
           })
           setCast(actors);
-          getCast(cast);
         })
       };
     
@@ -36,7 +33,6 @@ export function MovieDetails({ getCast, getReview}) {
         .then(response => {
           const reviewsData = response.results.map(review => {return({author: review.author, review: review.content, id: review.id})})
           setReviews(reviewsData);
-          getReview(reviews);
         })
       };
 

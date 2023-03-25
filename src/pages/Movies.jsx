@@ -4,7 +4,7 @@ import { MoviesList } from "components/moviesList/MoviesList";
 import { apiService } from "service/themoviedbApi";
 import { SearchBar } from "components/searchBar/SearchBar";
 
-export function Movies({onClickMovieItem}) {
+export function Movies() {
     const [movies, setMovies] = useState(null);
 
     const searchMovieByKeyWord = (inputValue) => {
@@ -32,7 +32,7 @@ export function Movies({onClickMovieItem}) {
     return (
         <>
         <SearchBar handleSearchSubmit={searchMovieByKeyWord}/>
-        {movies && <MoviesList movies={movies} onClickMovieItem={onClickMovieItem}/>}
+        {movies && <MoviesList movies={movies}/>}
         </>
     );
 };

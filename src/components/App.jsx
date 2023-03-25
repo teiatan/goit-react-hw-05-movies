@@ -13,13 +13,8 @@ import { NotFound } from "pages/NotFound";
 
 
 export const App = () => {
-  const [currentMovieId, setCurrentMovieId] = useState(null);
   const [reviews, setReviews] = useState(null);
   const [cast, setCast] = useState(null);
-
-  const onClickMovieItem = (id) => {
-    setCurrentMovieId(id);
-  };
 
   const getCast = (data) => {
     setCast(data);
@@ -34,11 +29,11 @@ export const App = () => {
       <Header />
       <Main>
         <Routes>
-          <Route path="/" element={<Home onClickMovieItem={onClickMovieItem} />} />
-          <Route path="/movies" element={<Movies onClickMovieItem={onClickMovieItem}/>}>
+          <Route path="/" element={<Home/>} />
+          <Route path="/movies" element={<Movies/>}>
             
           </Route>
-          <Route path="/movies/:movieID" element={<MovieDetails movieId={currentMovieId} getCast={getCast} getReview={getReview}/>}>
+          <Route path="/movies/:movieID" element={<MovieDetails getCast={getCast} getReview={getReview}/>}>
             <Route path="/movies/:movieID/cast" element={<Cast actors={cast}/>} />
             <Route path="/movies/:movieID/reviews" element={<Reviews reviews={reviews}/>} />
           </Route>
