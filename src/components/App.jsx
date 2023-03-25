@@ -4,7 +4,7 @@ import { Header } from "./header/Header";
 import { Main } from "./main/Main";
 import { Movies } from "pages/Movies";
 import { Home } from "pages/Home";
-import { MovieDetails } from "./movieDetails/MovieDetails";
+import { MovieDetails } from "../pages/MovieDetails";
 import { MoviesList } from "components/moviesList/MoviesList";
 import { OneMovie } from "components/oneMovie/OneMovie";
 import { AdditionalInfoButtons } from "./additionalInfoButtons/AdditionalInfoButtons";
@@ -22,22 +22,8 @@ export const App = () => {
   const [reviews, setReviews] = useState(null);
   const [cast, setCast] = useState(null);
 
-  useEffect(()=>{
-    apiService.getMostPopularMovies().then(
-      response => setMovies(response)
-    );    
-  }, []);
-
-  useEffect(()=>{
-    if(!currentMovieId) {
-      return;
-    };
-    apiService.getWholeMovieInformation(currentMovieId).then(
-      response => setCurrentMovieInfo(response)
-    );
-  }, [currentMovieId]);
-
-  const takeCurrentMovieIdByClickOnLink = (id) => {
+  const onClickMovieItem = (id) => {
+    console.log('works app');
     setCurrentMovieId(id);
   };
 
@@ -66,12 +52,13 @@ export const App = () => {
       <Header />
       <Main>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/movies" element={<Movies />}>
-            <Route path="/movies/:movieID" element={<MovieDetails />}>
-              {/* <Route path="/cast" element={<Cast />} /> */}
-              {/* <Route path="/reviews" element={<Reviews />} /> */}
-            </Route>
+          <Route path="/" element={<Home onClickMovieItem={onClickMovieItem} />} />
+          <Route path="/movies" element={<Movies onClickMovieItem={onClickMovieItem}/>}>
+            
+          </Route>
+          <Route path="/movies/:movieID" element={<MovieDetails movieId={currentMovieId}/>}>
+            {/* <Route path="/cast" element={<Cast />} /> */}
+            {/* <Route path="/reviews" element={<Reviews />} /> */}
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

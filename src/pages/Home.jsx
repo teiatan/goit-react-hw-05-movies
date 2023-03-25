@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { MoviesList } from "components/moviesList/MoviesList";
 import { apiService } from "service/themoviedbApi";
 
-export function Home() {
+export function Home({onClickMovieItem}) {
     
     const [movies, setMovies] = useState([]);
 
@@ -13,6 +13,6 @@ export function Home() {
       }, []);
 
     return (
-        <MoviesList title="Trending today" movies={movies} /* onClickMovieLink={takeCurrentMovieIdByClickOnLink} *//>
+        <MoviesList title="Trending today" movies={movies} onClickMovieItem={onClickMovieItem}/>
     );
 };

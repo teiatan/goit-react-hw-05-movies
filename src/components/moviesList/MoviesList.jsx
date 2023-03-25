@@ -1,9 +1,13 @@
-export function MoviesList({title, movies, onClickMovieLink}) {
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+
+export function MoviesList({title, movies, onClickMovieItem}) {
 
     const onClick = e => {
         e.preventDefault();
-        onClickMovieLink(e.target.id);
-    }
+        console.log('click works');
+        onClickMovieItem(e.target.id);
+    };
 
     return(
         <>
@@ -11,12 +15,16 @@ export function MoviesList({title, movies, onClickMovieLink}) {
         <ul>
             {movies.map(movie => {
                 return(
-                    <li key={movie.id}>
-                        <a href="router" id={movie.id} onClick={onClick}>{movie.title}</a>
+                    <li key={movie.id} id={movie.id} onClick={onClick}>
+                        <Link to={`/movies/:${movie.id}`} id={movie.id} /* onClick={onClick} */>{movie.title}</Link>
                     </li>
                 )
             })}
         </ul>
         </>
     );
+};
+
+MoviesList.propTypes = {
+    onClickMovieItem: PropTypes.func,
 };
