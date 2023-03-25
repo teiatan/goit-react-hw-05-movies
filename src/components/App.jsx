@@ -23,7 +23,6 @@ export const App = () => {
   const [cast, setCast] = useState(null);
 
   const onClickMovieItem = (id) => {
-    console.log('works app');
     setCurrentMovieId(id);
   };
 

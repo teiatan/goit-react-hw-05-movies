@@ -5,7 +5,6 @@ export function MoviesList({title, movies, onClickMovieItem}) {
 
     const onClick = e => {
         e.preventDefault();
-        console.log('click works');
         onClickMovieItem(e.target.id);
     };
 
