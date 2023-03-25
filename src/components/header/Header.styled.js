@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { NavLink } from 'react-router-dom';
 
 export const NavTag = styled.div`
     display: flex;
@@ -34,5 +35,13 @@ export const HeaderTag = styled.header`
 export const Ul = styled.ul`
     display: flex;
     gap: 20px;
+`;
+
+export const StyledNavLink = styled(NavLink)`
+  color: black;
+
+  &.active {
+    color: rgb(20, 150, 144);
+  }
 `;
 

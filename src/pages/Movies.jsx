@@ -1,11 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { MoviesList } from "components/moviesList/MoviesList";
 import { apiService } from "service/themoviedbApi";
 import { SearchBar } from "components/searchBar/SearchBar";
 
 export function Movies() {
-    const [searchInput, setSearchInput] = useState(null);
     const [movies, setMovies] = useState(null);
 
     const searchMovieByKeyWord = (inputValue) => {
@@ -32,7 +31,7 @@ export function Movies() {
 
     return (
         <>
-        {!searchInput && <SearchBar handleSearchSubmit={searchMovieByKeyWord}/>}
+        <SearchBar handleSearchSubmit={searchMovieByKeyWord}/>
         {movies && <MoviesList movies={movies}/>}
         </>
     );

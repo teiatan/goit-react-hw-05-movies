@@ -1,6 +1,6 @@
 import { Ul, HeaderTag, NavTag } from "./Header.styled";
 import { PageContainer } from "components/pageContainer/pageContainer";
-import { NavLink } from "react-router-dom";
+import { StyledNavLink } from "./Header.styled";
 
 export function Header() {
 
@@ -10,8 +10,8 @@ export function Header() {
                 <NavTag>
                     <a href="/">🎬</a>
                     <Ul>
-                        <li><NavLink to="/">Home</NavLink></li>
-                        <li><NavLink to="/movies">Movies</NavLink></li>
+                        <li><StyledNavLink to="/">Home</StyledNavLink></li>
+                        <li><StyledNavLink to="/movies">Movies</StyledNavLink></li>
                     </Ul>
                 </NavTag>
             </PageContainer>

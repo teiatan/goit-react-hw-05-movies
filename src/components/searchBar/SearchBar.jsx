@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import {Form, Input, Label, Button} from './SearchBar.styled';
 export function SearchBar({handleSearchSubmit}) {
