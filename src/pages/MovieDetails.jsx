@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { OneMovie } from "components/oneMovie/OneMovie";
 import { AdditionalInfoButtons } from "components/additionalInfoButtons/AdditionalInfoButtons";
 import { apiService } from "service/themoviedbApi";
@@ -40,6 +41,7 @@ export function MovieDetails() {
         <>
             <OneMovie data={currentMovieInfo}/>
             <AdditionalInfoButtons movieId={movieID} onClickCast={getMovieCast} onClickReview={getMovieReview}/>
+            <Outlet />
         </> 
     );
 };

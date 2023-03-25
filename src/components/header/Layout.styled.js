@@ -17,6 +17,7 @@ export const NavTag = styled.div`
 `;
 
 export const HeaderTag = styled.header`
+    width: 100%;
     position: fixed;
     top: 0;
     z-index: 10;
