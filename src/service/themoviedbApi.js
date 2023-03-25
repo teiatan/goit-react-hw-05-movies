@@ -23,19 +23,15 @@ class ApiService {
     };
 
     async getMoviesByKeyWord(keyWord) {
-        let movies =[];
+        let moviesByKeyWord =null;
         try {
             await fetch(`${this.baseUrl}${this.byKeyWordUrl}?api_key=${this.apiKey}&query=${keyWord}`)
             .then(response => response.json())
-            .then(data => {
-                movies = data.results.map(movie=>{
-                    return ({title: movie.name, id: movie.id})
-                });
-            });
+            .then(data => moviesByKeyWord=data);
         } catch(error) {
             console.log(`fetch error: ${error}`)
         };
-        return(movies);
+        return(moviesByKeyWord);
     };
 
     async getWholeMovieInformation(id) {

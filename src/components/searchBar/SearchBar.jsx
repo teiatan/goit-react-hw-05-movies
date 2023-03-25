@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 
 import {Form, Input, Label, Button} from './SearchBar.styled';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
 export function SearchBar({handleSearchSubmit}) {
 
     const [input, setInput] = useState("");
@@ -12,10 +11,6 @@ export function SearchBar({handleSearchSubmit}) {
     
     const onSubmit = e => {
         e.preventDefault();
-        if (input.trim() === '') {
-            Notify.failure(`Search request shouldn't be empty`);
-            return;
-          };
         handleSearchSubmit(input);
     }
 
