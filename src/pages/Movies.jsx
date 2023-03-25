@@ -2,10 +2,11 @@ import { useState, useEffect } from "react";
 //import { MoviesList } from "components/moviesList/MoviesList";
 import { apiService } from "service/themoviedbApi";
 import { SearchBar } from "components/searchBar/SearchBar";
+import { MoviesList } from "components/moviesList/MoviesList";
 
 export function Movies() {
     const [searchInput, setSearchInput] = useState(null);
-    const [movies, setMovies] = useState([]);
+    const [movies, setMovies] = useState(null);
 
     const searchMovieByKeyWord = (inputValue) => {
         apiService.getMoviesByKeyWord(inputValue).then(
@@ -16,7 +17,7 @@ export function Movies() {
     return (
         <>
         {!searchInput && <SearchBar handleSearchSubmit={searchMovieByKeyWord}/>}
-        
+        {movies && <MoviesList movies={movies}/>}
         </>
     );
 };
