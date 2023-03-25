@@ -49,3 +49,7 @@ li {
 button {
   cursor: pointer;
 }
+
+.isHidden {
+  display: none;
+}

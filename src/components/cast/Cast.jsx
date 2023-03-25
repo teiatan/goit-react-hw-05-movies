@@ -20,7 +20,7 @@ export function Cast () {
 
     return (
         <>
-            <H3>Actors</H3>
+            <H3 className="isHidden">Actors</H3>
             {cast.length===0 ?
             <p>There is no information about actors</p>
             :

@@ -22,7 +22,7 @@ export function Reviews () {
         <p> there are no reviews yet</p>
         :
             <>
-                <H3>Reviews</H3> 
+                <H3 className="isHidden">Reviews</H3> 
                 <Ul>
                     {reviews.map(review => {
                         return(

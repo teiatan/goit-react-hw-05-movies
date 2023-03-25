@@ -5,7 +5,8 @@ export const StyledLink = styled(NavLink)`
     color: black;
 
     &.active {
-        color: rgb(20, 150, 144);;
+        color: rgb(20, 150, 144);
+        font-weight: 700;
     }
 `;
 
@@ -26,7 +27,7 @@ export const Div = styled.div`
     align-items: center;
     padding: 10px;
     max-width: 300px;
-    margin: 0 auto;
+    margin: 20px auto;
     border: 10px solid transparent;
     border-image: 10 repeating-linear-gradient(45deg, #A7CECC, #A7CECC 10px, transparent 10px, transparent 20px, #F8463F 20px, #F8463F 30px,transparent 30px, transparent 40px);
 `;
