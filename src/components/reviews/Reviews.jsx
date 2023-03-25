@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { apiService } from "service/themoviedbApi";
+import { Li, Ul, H3 } from "./Reviews.styled";
 
 export function Reviews () {
     const [reviews, setReviews] = useState([]);
@@ -21,17 +22,17 @@ export function Reviews () {
         <p> there are no reviews yet</p>
         :
             <>
-                <h3>Reviews</h3> 
-                <ul>
+                <H3>Reviews</H3> 
+                <Ul>
                     {reviews.map(review => {
                         return(
-                            <li key={review.id}>
+                            <Li key={review.id}>
                                 <h3>Author: {review.author}</h3>
                                 <p>{review.review}</p>
-                            </li>
+                            </Li>
                         )
                     })}
-                </ul>
+                </Ul>
             </>
         }
         </>
