@@ -11,8 +11,10 @@ export function Movies() {
     const [emptySearch, setEmptySearch] = useState(false);
     const [emptyRequest, setemptyRequest] = useState(false);
     const [searchParams, setSearchParams] = useSearchParams();
+    const query = searchParams.get('query') || "";
     
     useEffect(()=>{
+        setSearch(query);
         if (search.trim() === '') {
             return;
         };
@@ -33,13 +35,7 @@ export function Movies() {
                 Notify.success(`${response.total_results} movies are found`);
             }
         );
-    }, [search]);
-
-    useEffect(()=>{
-        setSearch(query);
-    });
-
-    const query = searchParams.get('query') || "";
+    }, [search, query]);
 
     const updateQueryString = (query) => {
         const nextParams = query !== "" ? { query } : {};
