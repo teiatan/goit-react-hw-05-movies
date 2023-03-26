@@ -7,7 +7,7 @@ export function OneMovie({data}) {
             {data && 
                 <Div>
                     <ImgTag 
-                        src={`https://www.themoviedb.org/t/p/original/${data.poster_path}`}
+                        src={(data.poster_path) ? (`https://www.themoviedb.org/t/p/original/${data.poster_path}`) : ("https://i.ibb.co/FB037FW/image.jpg")}
                         alt={data.tagline}>
                     </ImgTag>
                     <InfoContainer>

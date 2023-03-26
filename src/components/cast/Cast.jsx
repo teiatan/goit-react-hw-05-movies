@@ -11,7 +11,7 @@ export function Cast () {
         apiService.getMovieActors(movieID)
         .then( response => {
           const actors = response.cast.map(actor => {
-            return({name: actor.name, character: actor.character, id: actor.credit_id, photo: `https://www.themoviedb.org/t/p/original/${actor.profile_path}`})
+            return({name: actor.name, character: actor.character, id: actor.credit_id, photo: actor.profile_path})
           })
           setCast(actors);
         })
@@ -31,7 +31,7 @@ export function Cast () {
                                 <h4>{actor.name}</h4>
                                 <p>Character: {actor.character}</p>
                             </div>
-                            <Img src={actor.photo} alt={actor.name}></Img>
+                            <Img src={actor.photo ? (`https://www.themoviedb.org/t/p/original/${actor.photo}`) : ("https://i.ibb.co/VVFCdTD/image.jpg")} alt={actor.name}></Img>
                         </Li>
                     )
                 })}
