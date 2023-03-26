@@ -7,23 +7,21 @@ import { SearchBar } from "components/searchBar/SearchBar";
 
 export function Movies() {
     const [movies, setMovies] = useState(null);
-    const [search, setSearch] = useState("");
     const [emptySearch, setEmptySearch] = useState(false);
     const [emptyRequest, setemptyRequest] = useState(false);
     const [searchParams, setSearchParams] = useSearchParams();
     const query = searchParams.get('query') || "";
     
     useEffect(()=>{
-        setSearch(query);
-        if (search.trim() === '') {
+        if (query.trim() === '') {
             return;
         };
-        apiService.getMoviesByKeyWord(search).then(
+        apiService.getMoviesByKeyWord(query).then(
             response => {
                 if(response.results.length===0) {
                     setemptyRequest(true);
                     setEmptySearch(false);
-                    Notify.failure(`There are no ${search} movies`);
+                    Notify.failure(`There are no ${query} movies`);
                     return;
                 };
                 const foundMovies = response.results.map(movie => {
@@ -35,7 +33,7 @@ export function Movies() {
                 Notify.success(`${response.total_results} movies are found`);
             }
         );
-    }, [search, query]);
+    }, [query]);
 
     const updateQueryString = (query) => {
         const nextParams = query !== "" ? { query } : {};
@@ -44,7 +42,6 @@ export function Movies() {
 
     const searchMovieByKeyWord = (inputValue) => {
         setMovies(null);
-        setSearch(inputValue);
         setemptyRequest(false);
         updateQueryString(inputValue);
         if (inputValue.trim() === '') {
@@ -57,7 +54,7 @@ export function Movies() {
         <>
             <SearchBar handleSearchSubmit={searchMovieByKeyWord}/>
             {emptySearch && <p>Search request shouldn't be empty</p>}
-            {emptyRequest && <p>There are no ${search} movies</p>}
+            {emptyRequest && <p>There are no ${query} movies</p>}
             {movies && <MoviesList movies={movies}/>}
         </>
     );
