@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { MoviesList } from "components/moviesList/MoviesList";
 import { apiService } from "service/themoviedbApi";
@@ -9,7 +10,8 @@ export function Movies() {
     const [search, setSearch] = useState("");
     const [emptySearch, setEmptySearch] = useState(false);
     const [emptyRequest, setemptyRequest] = useState(false);
-
+    const [searchParams, setSearchParams] = useSearchParams();
+    
     useEffect(()=>{
         if (search.trim() === '') {
             return;
@@ -33,10 +35,22 @@ export function Movies() {
         );
     }, [search]);
 
+    useEffect(()=>{
+        setSearch(query);
+    });
+
+    const query = searchParams.get('query') || "";
+
+    const updateQueryString = (query) => {
+        const nextParams = query !== "" ? { query } : {};
+        setSearchParams(nextParams);
+    };
+
     const searchMovieByKeyWord = (inputValue) => {
         setMovies(null);
         setSearch(inputValue);
         setemptyRequest(false);
+        updateQueryString(inputValue);
         if (inputValue.trim() === '') {
             setEmptySearch(true);
             Notify.failure(`Search request shouldn't be empty`);
