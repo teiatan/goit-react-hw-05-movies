@@ -24,9 +24,8 @@ export function Movies() {
                     Notify.failure(`There are no ${query} movies`);
                     return;
                 };
-                const foundMovies = response.results.map(movie => {
-                    return ({title: movie.name, id: movie.id})
-                });
+                console.log(response);
+                const foundMovies = response.results;
                 setMovies(foundMovies);
                 setEmptySearch(false);
                 setemptyRequest(false);

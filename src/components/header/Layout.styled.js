@@ -14,6 +14,14 @@ export const NavTag = styled.div`
     box-sizing: border-box;
     flex-direction: row-reverse;
 
+    @media screen and (min-width: 768px) {
+        width: 768px;
+    }
+
+    @media screen and (min-width: 1200px) {
+        width: 1200px;
+    }
+    width: 1200px;
 `;
 
 export const HeaderTag = styled.header`

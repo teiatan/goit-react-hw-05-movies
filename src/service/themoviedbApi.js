@@ -25,12 +25,13 @@ class ApiService {
     async getMoviesByKeyWord(keyWord) {
         let moviesByKeyWord =null;
         try {
-            await fetch(`${this.baseUrl}${this.byKeyWordUrl}?api_key=${this.apiKey}&query=${keyWord}`)
+            await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${this.apiKey}&query=${keyWord}`)
             .then(response => response.json())
             .then(data => moviesByKeyWord=data);
         } catch(error) {
             console.log(`fetch error: ${error}`)
         };
+        console.log(moviesByKeyWord);
         return(moviesByKeyWord);
     };
 
