@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { apiService } from "service/themoviedbApi";
-import { Img, Ul, Li, H3 } from "./Cast.styled";
+import { Img, Ul, Li, H3, P } from "./Cast.styled";
 
 export function Cast () {
     const [cast, setCast] = useState([]);
@@ -21,7 +21,7 @@ export function Cast () {
         <>
             <H3 className="isHidden">Actors</H3>
             {cast.length===0 ?
-            <p>There is no information about actors</p>
+            <P>There is no information about actors</P>
             :
             <Ul>
                 {cast.map(actor => {
@@ -31,7 +31,7 @@ export function Cast () {
                                 <h4>{actor.name}</h4>
                                 <p>Character: {actor.character}</p>
                             </div>
-                            <Img src={actor.photo ? (`https://www.themoviedb.org/t/p/original/${actor.photo}`) : ("https://i.ibb.co/VVFCdTD/image.jpg")} alt={actor.name}></Img>
+                            <Img src={actor.photo ? (`https://www.themoviedb.org/t/p/original/${actor.photo}`) : ("https://i.ibb.co/dPBdjhT/actor-plug.png")} alt={actor.name}></Img>
                         </Li>
                     )
                 })}

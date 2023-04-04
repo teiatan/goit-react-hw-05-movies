@@ -5,6 +5,7 @@ export const Img = styled.img`
 `;
 
 export const Ul = styled.ul`
+    margin-top: 20px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -14,8 +15,9 @@ export const Ul = styled.ul`
 export const Li = styled.li`
     width: 100%;
     padding: 5px;
-    border-radius: 10px 20px 30px 40px/30px;
-    border: 10px solid pink;
+    padding: 15px;
+    background-color: #ffd567;
+    border-radius: 20px;
 `;
 
 export const H3 = styled.h3`

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { apiService } from "service/themoviedbApi";
 import { Li, Ul, H3 } from "./Reviews.styled";
+import { P } from "components/cast/Cast.styled";
 
 export function Reviews () {
     const [reviews, setReviews] = useState([]);
@@ -18,7 +19,7 @@ export function Reviews () {
     return(
         <>
             {reviews.length ===0 ?
-                <p> there are no reviews yet</p>
+                <P> There are no reviews yet</P>
                 :
                 <>
                     <H3 className="isHidden">Reviews</H3> 
