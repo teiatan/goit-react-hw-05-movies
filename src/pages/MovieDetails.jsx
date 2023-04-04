@@ -7,7 +7,7 @@ import { apiService } from "service/themoviedbApi";
 import { Suspense } from "react";
 import { Button } from "components/searchBar/SearchBar.styled";
 
-export function MovieDetails({goBackLink}) {
+export function MovieDetails() {
 
     const [currentMovieInfo, setCurrentMovieInfo] = useState(null);
 
@@ -19,20 +19,19 @@ export function MovieDetails({goBackLink}) {
         );
     }, [movieID]);
 
-    const location = useRef(useLocation()); 
-    console.log(location.current.state);
     const navigate = useNavigate();
+    const location = useRef(useLocation()); 
+    const goBackLink = location.current?.state?.from || null;
 
     const goBack = () => {
-        console.log(goBackLink);
-        //navigate(`location.pathname`);
+        navigate(goBackLink);
     };
 
     return (
         <>
             <OneMovie data={currentMovieInfo}/>
             <AdditionalInfoButtons movieId={movieID}/>
-            <Button onClick={goBack}>Go back</Button>
+            {goBackLink && <Button onClick={goBack}>Go back</Button>}
             <Suspense fallback={<div>Loading...</div>}>
                 <Outlet />
             </Suspense>
