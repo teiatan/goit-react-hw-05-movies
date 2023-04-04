@@ -6,8 +6,10 @@ export const Form = styled.form`
     width: 100%;
     max-width: 600px;
     background-color: #fff;
-    border-radius: 3px;
+    border-radius: 20px;
     overflow: hidden;
+    margin-top: 10px;
+    margin-bottom: 20px;
 `;
   
 export const Button = styled.button`
@@ -15,16 +17,15 @@ export const Button = styled.button`
     width: 48px;
     height: 48px;
     border: 0;
-    background-image: white;
+    background: #ff5e42;
     background-size: 40%;
     background-repeat: no-repeat;
     background-position: center;
-    opacity: 0.6;
     transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
     outline: none;
     &:hover {
-        opacity: 1;
+        opacity: 0.6;
     }
 
 `;
@@ -56,3 +57,18 @@ export const Input = styled.input`
     font-size: 18px;
   }
 `;
+
+export const Div = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+export const GoBackButton = styled.button`
+    width: 300px;
+    height: 40px;
+    color: #ffd567;
+    background-color: #1e2a06;
+    border-radius: 20px;
+    margin: 5px;
+    font-size: 20px;
+`

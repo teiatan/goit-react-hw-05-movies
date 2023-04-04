@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { ImgTag, Div, InfoContainer } from "./OneMovie.styled";
 
-export function OneMovie({data}) {
+export function OneMovie({data, children}) {
     return (
         <>
             {data && 
@@ -21,6 +21,7 @@ export function OneMovie({data}) {
                             {return(<li key={genre.name}>{genre.name}</li>)}
                             )}
                         </ul>
+                        {children}
                     </InfoContainer>
                 </Div>
             }

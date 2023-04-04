@@ -24,7 +24,6 @@ export function Movies() {
                     Notify.failure(`There are no ${query} movies`);
                     return;
                 };
-                console.log(response);
                 const foundMovies = response.results;
                 setMovies(foundMovies);
                 setEmptySearch(false);

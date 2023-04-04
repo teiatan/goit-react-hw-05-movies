@@ -5,7 +5,7 @@ import { OneMovie } from "components/oneMovie/OneMovie";
 import { AdditionalInfoButtons } from "components/additionalInfoButtons/AdditionalInfoButtons";
 import { apiService } from "service/themoviedbApi";
 import { Suspense } from "react";
-import { Button } from "components/searchBar/SearchBar.styled";
+import { GoBackButton } from "components/searchBar/SearchBar.styled";
 
 export function MovieDetails() {
 
@@ -29,9 +29,10 @@ export function MovieDetails() {
 
     return (
         <>
-            <OneMovie data={currentMovieInfo}/>
-            <AdditionalInfoButtons movieId={movieID}/>
-            {goBackLink && <Button onClick={goBack}>Go back</Button>}
+            {goBackLink && <GoBackButton onClick={goBack}>⮰ Go back to movie list</GoBackButton>}
+            <OneMovie data={currentMovieInfo}>
+                <AdditionalInfoButtons movieId={movieID}/>
+            </OneMovie>
             <Suspense fallback={<div>Loading...</div>}>
                 <Outlet />
             </Suspense>

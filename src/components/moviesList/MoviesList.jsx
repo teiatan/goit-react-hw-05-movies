@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import { Title, StyledLink, Ul, Li, Div, Img } from "./MoviesList.styled";
 
 export function MoviesList({title, movies, goBack}) {
-    //console.log(movies);
     return(
         <>
             {title && <Title>{title}</Title>}
