@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-export function MoviesList({title, movies}) {
+export function MoviesList({title, movies, goBack}) {
 
     return(
         <>
@@ -10,7 +10,7 @@ export function MoviesList({title, movies}) {
                 {movies.map(movie => {
                     return(
                         <li key={movie.id}>
-                            <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
+                            <Link to={`/movies/${movie.id}`} state={{from: goBack}}>{movie.title}</Link>
                         </li>
                     )
                 })}

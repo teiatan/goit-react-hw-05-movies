@@ -13,6 +13,6 @@ export function Home() {
       }, []);
 
     return (
-        <MoviesList title="Trending today" movies={movies}/>
+        <MoviesList title="Trending today" movies={movies} goBack={'/'}/>
     );
 };

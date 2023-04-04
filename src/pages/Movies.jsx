@@ -11,7 +11,7 @@ export function Movies() {
     const [emptyRequest, setemptyRequest] = useState(false);
     const [searchParams, setSearchParams] = useSearchParams();
     const query = searchParams.get('query') || "";
-    
+
     useEffect(()=>{
         if (query.trim() === '') {
             return;
@@ -55,7 +55,7 @@ export function Movies() {
             <SearchBar handleSearchSubmit={searchMovieByKeyWord}/>
             {emptySearch && <p>Search request shouldn't be empty</p>}
             {emptyRequest && <p>There are no ${query} movies</p>}
-            {movies && <MoviesList movies={movies}/>}
+            {movies && <MoviesList movies={movies} goBack={`/movies?query=${query}`}/>}
         </>
     );
 };
