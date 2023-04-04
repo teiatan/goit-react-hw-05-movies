@@ -26,7 +26,7 @@ export const HeaderTag = styled.header`
     justify-content: center;
     align-items: center;
     width: 100%;
-    background-color: pink;
+    background-color: #ff5e42;
     border-bottom: 1px solid gray;
     box-shadow: 2px 3px 5px lightgrey;
     
@@ -39,10 +39,10 @@ export const Ul = styled.ul`
 `;
 
 export const StyledNavLink = styled(NavLink)`
-  color: black;
+  color: #1e2a06;
 
   &.active {
-    color: rgb(20, 150, 144);
+    color: #ffd567;
   }
 `;
 

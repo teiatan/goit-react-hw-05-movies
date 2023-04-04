@@ -1,16 +1,17 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import { Title, StyledLink } from "./MoviesList.styled";
 
 export function MoviesList({title, movies, goBack}) {
 
     return(
         <>
-            {title && <h2>{title}</h2>}
+            {title && <Title>{title}</Title>}
             <ul>
                 {movies.map(movie => {
                     return(
                         <li key={movie.id}>
-                            <Link to={`/movies/${movie.id}`} state={{from: goBack}}>{movie.title}</Link>
+                            <StyledLink to={`/movies/${movie.id}`} state={{from: goBack}}>{movie.title}</StyledLink>
                         </li>
                     )
                 })}
